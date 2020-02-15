@@ -8,4 +8,15 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :username, presence: true
   validates :username, uniqueness: true
+
+  belongs_to :user_type, polymorphic: true
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.username = auth.info.nickname
+      user.password = Devise.friendly_token[0, 20]
+      user.name = auth.info.name
+      end
+  end
 end
