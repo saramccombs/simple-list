@@ -1,3 +1,5 @@
-<h1>Welcome back <%= current_user.name %>!</h1>
+<h1>Welcome back <%= current_user.username %>!</h1>
 
 <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+
+<%= render partial: "account_form" if current_user.account_id == nil %>
