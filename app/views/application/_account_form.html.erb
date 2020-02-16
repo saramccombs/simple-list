@@ -1,7 +1,16 @@
 <h1>Let's Finish Your Account Setup</h1>
 
-Which account type are you creating?
+<%= form_for @parent do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
 
-<%= link_to  "Parent",  new_parent_url %>
+  <div class="field">
+    <%= f.label :team_name, "Team Name" %><br />
+    <%= f.text_field :team_name %>
+  </div>
 
-<%= link_to "Child", root_url %>
+  <%= f.submit %>
+
+<% end %>
