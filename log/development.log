@@ -1,0 +1,180 @@
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2020-02-16 13:02:19 -0500
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.2.1) lib/active_record/migration.rb:587:in `check_pending!'
+activerecord (6.0.2.1) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.2.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+webpacker (4.2.2) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.2.1) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200214180259)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "name" varchar, "username" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200214180259"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddOmniauthToUsers (20200215170225)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "uid" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200215170225"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateParents (20200216180004)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "parents" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_27c1d070f3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_parents_on_user_id" ON "parents" ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200216180004"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-16 18:02:42.242294"], ["updated_at", "2020-02-16 18:02:42.242294"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateParents (20200216180004)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "parents"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200216180004"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddOmniauthToUsers (20200215170225)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "name" varchar DEFAULT NULL, "username" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "provider" varchar DEFAULT NULL, "uid" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at","provider","uid")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at","provider","uid" FROM "users"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "name" varchar DEFAULT NULL, "username" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "provider" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at","provider")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at","provider" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "name" varchar DEFAULT NULL, "username" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "provider" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_reset_password_token" ON "ausers" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_ausers_on_email" ON "ausers" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at","provider")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at","provider" FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar DEFAULT NULL, "reset_password_sent_at" datetime DEFAULT NULL, "remember_created_at" datetime DEFAULT NULL, "name" varchar DEFAULT NULL, "username" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "users" ("id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at")
+                     SELECT "id","email","encrypted_password","reset_password_token","reset_password_sent_at","remember_created_at","name","username","created_at","updated_at" FROM "ausers"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200215170225"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200214180259)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP INDEX "index_users_on_reset_password_token"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX "index_users_on_email"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200214180259"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20200214180259)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "username" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200214180259"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddOmniauthToUsers (20200215170225)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "provider" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "uid" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200215170225"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateParents (20200216180004)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "parents" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "user_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_27c1d070f3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_parents_on_user_id" ON "parents" ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200216180004"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
