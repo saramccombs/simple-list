@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :username, uniqueness: true
 
-  belongs_to :user_type, polymorphic: true
+  belongs_to :userable, polymorphic: true
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

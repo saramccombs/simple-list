@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2020_02_15_210543) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
-    t.string "user_role_type"
-    t.integer "user_role_id"
+    t.string "userable_type"
+    t.integer "userable_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_role_type", "user_role_id"], name: "index_users_on_user_role_type_and_user_role_id"
+    t.index ["userable_type", "userable_id"], name: "index_users_on_userable_type_and_userable_id"
   end
 
 end

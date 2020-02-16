@@ -5,13 +5,13 @@ t.string :username
 t.string :email
 t.string :password
 
-belongs_to :user_role, polymorphic: true
+belongs_to :userable, polymorphic: true
 
 # Parents
 
 t.string :team_name
 
-has_one :user, as: :user_role
+has_one :user, as: :userable
 has_many :children_parents
 has_many :children, through: :children_parents
 
@@ -19,7 +19,7 @@ has_many :children, through: :children_parents
 
 t.string :team_name
 
-has_one :user, as: :user_role
+has_one :user, as: :userable
 has_many :children_parents
 has_many :parents, through: :children_parents
 
