@@ -1,10 +1,16 @@
-<h1>Welcome back <%= current_user.username %>!</h1>
-
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<h1>Welcome back!</h1>
 
 <%= render partial: "account_form", object: @parent=Parent.new if current_user.account_id == nil %>
 <%
 =begin%>
- TODO: Ask Jake about how to make this partial with an object DRY 
+ TODO: Ask Jake about how to make this partial with an object DRY
+ TODO: Use before action to check if current_user.account_id is nil
 <%
 =end%>
+
+<h3>Team Parents</h3>
+<ul>
+<% family_parents_from_current_user.each do |p| %>
+  <li><%= p.name %></li>
+<% end %>
+</ul>
