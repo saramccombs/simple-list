@@ -10,24 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_15_210543) do
-
-  create_table "children", force: :cascade do |t|
-    t.string "team_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "children_parents", force: :cascade do |t|
-    t.integer "child_id"
-    t.integer "parent_id"
-  end
-
-  create_table "parents", force: :cascade do |t|
-    t.string "team_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
+ActiveRecord::Schema.define(version: 2020_02_15_170225) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -41,11 +24,8 @@ ActiveRecord::Schema.define(version: 2020_02_15_210543) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
-    t.string "userable_type"
-    t.integer "userable_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["userable_type", "userable_id"], name: "index_users_on_userable_type_and_userable_id"
   end
 
 end
