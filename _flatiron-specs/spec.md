@@ -17,11 +17,17 @@ Specs:
 
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 
-- [ ] Include signup (how e.g. Devise)
-- [ ] Include login (how e.g. Devise)
-- [ ] Include logout (how e.g. Devise)
+- [x] Include signup (how e.g. Devise)
+  - Signup with an email address using Devise
 
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [x] Include login (how e.g. Devise)
+  - Login using email and password using Devise
+
+- [x] Include logout (how e.g. Devise)
+  - Logout using Devise
+
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+  - Allows signup and login via Github using Devise and OmniAuth
 
 - [ ] Include nested resource show or index (URL e.g. users/2/recipes)
 
