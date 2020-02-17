@@ -24,7 +24,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <%= f.fields_for account do |ff| %>
+  <%= f.fields_for account, account.new do |ff| %>
   <div class="field">
     <%= ff.label :name %><br />
     <%= ff.text_field :name %>
