@@ -5,11 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
 
+  belongs_to :parent, optional: true
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.username = auth.info.nickname
       user.password = Devise.friendly_token[0, 20]
       end
+  end
+
+  def parent_attributes=(arg)
+    byebug
   end
 end

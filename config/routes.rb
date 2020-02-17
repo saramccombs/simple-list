@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   resources :parents, only: [:new, :create, :edit, :update, :destroy] do
     resources :children, only: [:new, :create, :edit, :update, :destroy]
   end
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { 
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'devise/registrations' 
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root 'application#hello'
 end
