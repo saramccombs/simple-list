@@ -1,5 +1,6 @@
 <h1>Welcome back!</h1>
 
+<!-- This partial should only render for the new parent account creation and never for a child login account. -->
 <%= render partial: "account_form", object: @parent=Parent.new if current_user.account_id == nil %>
 <%
 =begin%>
