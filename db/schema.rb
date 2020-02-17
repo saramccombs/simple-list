@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_000221) do
+ActiveRecord::Schema.define(version: 2020_02_17_211510) do
 
   create_table "children", force: :cascade do |t|
     t.string "name"
@@ -41,12 +41,13 @@ ActiveRecord::Schema.define(version: 2020_02_17_000221) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
-    t.integer "account_id"
-    t.string "account_type"
+    t.integer "parent_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["parent_id"], name: "index_users_on_parent_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "children", "users"
   add_foreign_key "parents", "users"
+  add_foreign_key "users", "parents"
 end
