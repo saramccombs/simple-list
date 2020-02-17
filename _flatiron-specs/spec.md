@@ -4,8 +4,11 @@ Specs:
 - [x] Using Ruby on Rails for the project
 
 - [ ] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
+TODO Add has_many relationship to parents and children
 
-- [ ] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+- [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+  - Parents belong_to User
+  - Children belong_to User
 
 - [ ] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
 
@@ -31,12 +34,19 @@ Specs:
 
 - [ ] Include nested resource show or index (URL e.g. users/2/recipes)
 
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+  - `new_parent_child` route is a "new" child nested under a parent: `/parents/:parent_id/children/new`
 
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 
 Confirm:
 - [ ] The application is pretty DRY
+
 - [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
+
+- [x] Views use helper methods if appropriate
+  - helper method `:account_from_current_user`
+  - helper method `:family_parents_from_current_user`
+  - helper method `:family_children_from_current_user`
+
 - [ ] Views use partials if appropriate
