@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :account_from_current_user, :family_parents_from_current_user
+  helper_method :account_from_current_user, :family_parents_from_current_user, :family_children_from_current_user
 
   def hello
   end
@@ -27,5 +27,9 @@ class ApplicationController < ActionController::Base
 
   def family_parents_from_current_user
     Parent.where(team_name: account_from_current_user.team_name)
+  end
+
+  def family_children_from_current_user
+    Child.where(team_name: account_from_current_user.team_name)
   end
 end
