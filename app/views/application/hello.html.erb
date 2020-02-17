@@ -10,8 +10,25 @@
 =end%>
 
 <h3>Team Parents</h3>
+<p>
+  Team parents are automatically added upon sign-up.
+</p>
+<p>
+  Parent accounts can switch teams by editing their account.
+</p>
 <ul>
 <% family_parents_from_current_user.each do |p| %>
   <li><%= p.name %></li>
 <% end %>
 </ul>
+
+<h3>Team Children</h3>
+<% if family_children_from_current_user.count == 0 %>
+  <%= link_to  "Create Child Account", new_parent_child_path(account_from_current_user) %>
+<% else %>
+  <ul>
+  <% family_children_from_current_user.each do |c| %>
+    <li><%= c.name %></li>
+  <% end %>
+  </ul>
+<% end %>
