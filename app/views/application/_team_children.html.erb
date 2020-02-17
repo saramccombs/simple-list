@@ -1,0 +1,10 @@
+<h3>Team Children</h3>
+<% if family_children_from_current_user.count == 0 %>
+  <%= link_to  "Create Child Account", new_parent_child_path(account_from_current_user) %>
+<% else %>
+  <ul>
+  <% family_children_from_current_user.each do |c| %>
+    <li><%= c.name %></li>
+  <% end %>
+  </ul>
+<% end %>
