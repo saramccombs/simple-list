@@ -16,6 +16,6 @@ class User < ApplicationRecord
   end
 
   def parent_attributes=(parent_attributes)
-    self.parent = Parent.find_or_create(name: parent_attributes[:name], team_name: parent_attributes[:team_name])
+    self.parent = Parent.create(name: parent_attributes[:name], team_name: parent_attributes[:team_name])
   end
 end
