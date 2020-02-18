@@ -20,5 +20,9 @@ class User < ApplicationRecord
   def parent_attributes=(parent_attributes)
     self.create_parent(parent_attributes)
   end
+
+  def child_attributes=(child_attributes)
+    self.create_child(child_attributes)
+  end
 end
 
