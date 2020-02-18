@@ -13,13 +13,12 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.username = auth.info.nickname
       user.password = Devise.friendly_token[0, 20]
+      user.parent_attributes=({name: auth.info.name, team_name: auth.info.name + " Team"})
       end
   end
 
   def parent_attributes=(parent_attributes)
-    byebug
     self.create_parent(parent_attributes)
-    byebug
   end
 end
 
