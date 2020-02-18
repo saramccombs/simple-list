@@ -16,6 +16,9 @@ class User < ApplicationRecord
   end
 
   def parent_attributes=(parent_attributes)
-    self.parent = Parent.create(name: parent_attributes[:name], team_name: parent_attributes[:team_name])
+    byebug
+    self.create_parent(parent_attributes)
+    byebug
   end
 end
+
