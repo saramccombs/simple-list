@@ -1,12 +1,14 @@
-<h3>Team Parents</h3>
+<h3><%= current_user.parent.team_name %></h3>
 <p>
-  Team parents are automatically added upon sign-up.
+  Note: Team parents are automatically added upon sign-up.
 </p>
-<p>
-  Parent accounts can switch teams by editing their account.
-</p>
-<ul>
-<% family_parents_from_current_user.each do |p| %>
-  <li><%= p.name %></li>
+<h4>Parents</h4>
+<% if family_parents_from_current_user.nil? %>
+You have no team parents.
+<% else %>
+  <ul>
+  <% family_parents_from_current_user.each do |p| %>
+    <li><%= p.name %></li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
