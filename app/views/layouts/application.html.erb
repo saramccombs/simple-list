@@ -11,6 +11,7 @@
 
   <body>
     <nav>
+      <%= link_to '-Dashboard-', root_path %>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
     </nav>
     <%= yield %>
