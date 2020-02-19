@@ -1,3 +1,19 @@
 <h1>Simple List Dashboard</h1>
 
-<%= link_to  "Create New Ideaboard", new_user_ideaboard_path %>
+<%= link_to  "Create New Ideaboard", new_user_ideaboard_path(current_user.id) %><br />
+
+<%
+=begin%>
+ <%= current_user.ideaboards.inspect %><br /> 
+<%
+=end%>
+
+<% if !current_user.ideaboards.count == 0 %>
+  <% current_user.ideaboards.each do |ib| %>
+    <ul>
+      <li><%= ib.ideaboard_name %></li>
+    </ul>
+    <% end %>
+<% else %>
+    You have no ideaboards.
+<% end %>
