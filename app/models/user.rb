@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[github]
 
   has_many :ideaboards
+  has_many :lists, through: :ideaboards
 
   validates :name, presence: true
   validates :username, presence: true
