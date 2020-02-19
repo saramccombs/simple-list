@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [] do
-    resources :ideaboards, only: [:new, :edit, :create, :destroy, :show] do
+    resources :ideaboards, only: [:new, :edit, :create, :update, :destroy, :show] do
       resources :lists, only: [:new, :edit, :create, :destroy, :show] do
         resources :tasks, only: [:new, :edit, :create, :destroy]
       end
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   root 'application#hello'
 end
 
+#TODO: Update routes comment below.
 #                         Prefix Verb     URI Pattern                                                                      Controller#Action
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------
 #      user_ideaboard_list_tasks POST     /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks(.:format)          tasks#create
