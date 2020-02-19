@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_193634) do
+ActiveRecord::Schema.define(version: 2020_02_19_195613) do
 
   create_table "ideaboards", force: :cascade do |t|
     t.string "ideaboard_name"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 2020_02_19_193634) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["ideaboard_id"], name: "index_lists_on_ideaboard_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "task_desc"
+    t.integer "task_priority"
+    t.integer "list_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_tasks_on_list_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,4 +59,6 @@ ActiveRecord::Schema.define(version: 2020_02_19_193634) do
 
   add_foreign_key "ideaboards", "users"
   add_foreign_key "lists", "ideaboards"
+  add_foreign_key "tasks", "lists"
+  add_foreign_key "tasks", "users"
 end

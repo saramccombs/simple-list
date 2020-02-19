@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :ideaboards
   has_many :lists, through: :ideaboards
+  has_many :tasks, through: :lists
 
   validates :name, presence: true
   validates :username, presence: true
