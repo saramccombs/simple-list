@@ -1,0 +1,2 @@
+class IdeaboardsController < ApplicationController
+end

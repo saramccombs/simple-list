@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[github]
 
+  has_many :ideaboards
+
   validates :name, presence: true
   validates :username, presence: true
   validates :username, uniqueness: true
