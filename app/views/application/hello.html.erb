@@ -2,18 +2,14 @@
 
 <%= link_to  "Create New Ideaboard", new_user_ideaboard_path(current_user.id) %><br />
 
-<%
-=begin%>
- <%= current_user.ideaboards.inspect %><br /> 
-<%
-=end%>
-
-<% if !current_user.ideaboards.count == 0 %>
-  <% current_user.ideaboards.each do |ib| %>
-    <ul>
-      <li><%= ib.ideaboard_name %></li>
-    </ul>
-    <% end %>
+<% if current_user.ideaboards.count == 0 %>
+  You have no ideaboards.
 <% else %>
-    You have no ideaboards.
+  <% current_user.ideaboards.each do |ideaboard| %>
+  <ul>
+    <li>
+    <%= link_to ideaboard.ideaboard_name, user_ideaboard_path(current_user,ideaboard) %>
+    </li>
+  </ul>
+  <% end %>
 <% end %>
