@@ -1,5 +1,5 @@
 <h4>Children</h4>
-<%= link_to  "Create Child Account", new_parent_child_path(account_from_current_user) %><br />
+<%= link_to  "Create Child Account", new_parent_child_path(current_user.parent_id)%><br />
 <% if family_children_from_current_user.count == 0 %>
 You have no team children.
 <% else %>

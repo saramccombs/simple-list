@@ -1,0 +1,12 @@
+<h3>Parent Information</h3>
+<%= f.fields_for :parent, Parent.new do |ff| %>
+  <div class="field">
+    <%= ff.label :name %><br />
+    <%= ff.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= ff.label :team_name %><br />
+    <%= ff.text_field :team_name %>
+  </div>
+<% end %>

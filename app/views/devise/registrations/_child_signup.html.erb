@@ -1,0 +1,10 @@
+<h3>Child Information</h3>
+<%= f.fields_for :child, Child.new do |ff| %>
+  <div class="field">
+    <%= ff.label :name %><br />
+    <%= ff.text_field :name %>
+  </div>
+
+  <% ff.hidden_field :parent, value: account_from_current_user.id %>
+  <% ff.hidden_field :team_name, value: account_from_current_user.team_name %>
+<% end %>
