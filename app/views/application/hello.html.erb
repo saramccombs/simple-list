@@ -1,3 +1,15 @@
-<h1>Welcome back!</h1>
+<h1>Simple List Dashboard</h1>
 
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<%= link_to  "Create New Ideaboard", new_user_ideaboard_path(current_user.id) %><br />
+
+<% if current_user.ideaboards.count == 0 %>
+  You have no ideaboards.
+<% else %>
+  <% current_user.ideaboards.each do |ideaboard| %>
+  <ul>
+    <li>
+    <%= link_to ideaboard.ideaboard_name, user_ideaboard_path(current_user,ideaboard) %>
+    </li>
+  </ul>
+  <% end %>
+<% end %>
