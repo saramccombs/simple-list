@@ -1,2 +1,15 @@
 <h1><%= @ideaboard.ideaboard_name %></h1>
 <%= link_to "Edit Ideaboard", edit_user_ideaboard_path(current_user, @ideaboard) %>
+<%= link_to "Create New List", new_user_ideaboard_list_path(current_user, @ideaboard) %><br />
+
+<% if @ideaboard.lists.count == 0 %>
+  You have no lists for this ideaboard.
+<% else %>
+  <% @ideaboard.lists.each do |list| %>
+  <ul>
+    <li>
+    <%= link_to list.list_name, user_ideaboard_list_path(current_user, @ideaboard, list) %>
+    </li>
+  </ul>
+  <% end %>
+<% end %>
