@@ -1,4 +1,4 @@
-<%= form_with model: @ideaboard, url: user_ideaboards_path, method: :POST do |f| %>
+<%= form_for @ideaboard, url: user_ideaboard_path do |f| %>
   <div class="form-field:">
     <%= f.label :ideaboard_name, "Name: " %><br />
     <%= f.text_field :ideaboard_name %>
