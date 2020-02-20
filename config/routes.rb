@@ -13,23 +13,29 @@ Rails.application.routes.draw do
 end
 
 #TODO: Update routes comment below.
-#                         Prefix Verb     URI Pattern                                                                      Controller#Action
+#                       Prefix Verb     URI Pattern                                                                      Controller#Action
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------
 #      user_ideaboard_list_tasks POST     /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks(.:format)          tasks#create
 #   new_user_ideaboard_list_task GET      /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks/new(.:format)      tasks#new
 #  edit_user_ideaboard_list_task GET      /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks/:id/edit(.:format) tasks#edit
-#       user_ideaboard_list_task DELETE   /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks/:id(.:format)      tasks#destroy
+#       user_ideaboard_list_task PATCH    /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks/:id(.:format)      tasks#update
+#                                PUT      /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks/:id(.:format)      tasks#update
+#                                DELETE   /users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks/:id(.:format)      tasks#destroy
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------
 #           user_ideaboard_lists POST     /users/:user_id/ideaboards/:ideaboard_id/lists(.:format)                         lists#create
 #        new_user_ideaboard_list GET      /users/:user_id/ideaboards/:ideaboard_id/lists/new(.:format)                     lists#new
 #       edit_user_ideaboard_list GET      /users/:user_id/ideaboards/:ideaboard_id/lists/:id/edit(.:format)                lists#edit
 #            user_ideaboard_list GET      /users/:user_id/ideaboards/:ideaboard_id/lists/:id(.:format)                     lists#show
+#                                PATCH    /users/:user_id/ideaboards/:ideaboard_id/lists/:id(.:format)                     lists#update
+#                                PUT      /users/:user_id/ideaboards/:ideaboard_id/lists/:id(.:format)                     lists#update
 #                                DELETE   /users/:user_id/ideaboards/:ideaboard_id/lists/:id(.:format)                     lists#destroy
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------
 #                user_ideaboards POST     /users/:user_id/ideaboards(.:format)                                             ideaboards#create
 #             new_user_ideaboard GET      /users/:user_id/ideaboards/new(.:format)                                         ideaboards#new
 #            edit_user_ideaboard GET      /users/:user_id/ideaboards/:id/edit(.:format)                                    ideaboards#edit
 #                 user_ideaboard GET      /users/:user_id/ideaboards/:id(.:format)                                         ideaboards#show
+#                                PATCH    /users/:user_id/ideaboards/:id(.:format)                                         ideaboards#update
+#                                PUT      /users/:user_id/ideaboards/:id(.:format)                                         ideaboards#update
 #                                DELETE   /users/:user_id/ideaboards/:id(.:format)                                         ideaboards#destroy
 # -----------------------------------------------------------------------------------------------------------------------------------------------------------
 #               new_user_session GET      /users/sign_in(.:format)                                                         devise/sessions#new
