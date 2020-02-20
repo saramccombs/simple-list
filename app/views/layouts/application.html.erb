@@ -11,8 +11,9 @@
 
   <body>
     <nav>
-      <%= link_to '-Dashboard-', root_path %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <%= link_to fas_icon('home 2x'), root_path %>
+      <%= link_to fas_icon('sign-out-alt 2x'), destroy_user_session_path, method: :delete %>
+      <span class="title">SimpleList</span>
     </nav>
     <%= yield %>
   </body>
