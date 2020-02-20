@@ -4,12 +4,17 @@ class TasksController < ApplicationController
   end
 
   def create
-    byebug
     @list = List.find_by(id: params[:list_id])
-    @task = current_user.lists.tasks.build(task_params)
-    byebug
+    #TODO Why does .build not work here?
+    #TODO Refactor this.
+    @task = Task.new
+    @task.task_desc = params[:task][:task_desc]
+    @task.task_priority = params[:task][:task_priority]
+    @task.list_id = params[:list_id]
+    @task.user_id = params[:user_id]
+    @task.save
     if @task.save
-      redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
+      redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
     else
       render new_user_ideaboard_list_task
     end
@@ -22,7 +27,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find_by(id: params[:id])
     if @task.update(task_params)
-      redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
+      redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], params[:list_id])
     else
       #TODO: Add error message 'update failed'
       render edit_user_ideaboard_list_task
@@ -30,9 +35,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    byebug
     @task = Task.find_by(id: params[:id])
+    byebug
     @task.destroy
-    redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
+    redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], params[:list_id])
   end
 
   private
