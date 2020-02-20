@@ -1,0 +1,18 @@
+<h2><%= link_to "Dashboard", root_path %> > <%= link_to @ideaboard.ideaboard_name, user_ideaboard_path(current_user, @ideaboard) %> > <%= @list.list_name %></h2>
+<h5><%= link_to "Edit", edit_user_ideaboard_list_path(current_user, @ideaboard, @list) %> <%= link_to "Delete" %></h5>
+<h3><%= @list.list_desc %></h3>
+<hr />
+<h4>List Tasks</h4>
+<h5><%= link_to "Add Task", new_user_ideaboard_list_task_path(current_user, @ideaboard, @list) %></h5>
+<% if @list.tasks.count == 0 %>
+  You have no tasks/items for this list.
+<% else %>
+  <% @list.tasks.each do |task| %>
+  <ul>
+    <li>
+    <%= link_to task.task_name, edit_user_ideaboard_list_task_path(current_user, @ideaboard, @list) %>
+    </li>
+  </ul>
+  <% end %>
+<% end %>
+
