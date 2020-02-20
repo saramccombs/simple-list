@@ -1,6 +1,6 @@
 <h1>Simple List Dashboard</h1>
 
-<%= link_to  "Create New Ideaboard", new_user_ideaboard_path(current_user.id) %><br />
+<%= button_to  "Create New Ideaboard", new_user_ideaboard_path(current_user.id) %><br />
 
 <% if current_user.ideaboards.count == 0 %>
   You have no ideaboards.
