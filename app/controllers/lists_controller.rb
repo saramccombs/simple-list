@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   def new
+    @ideaboard = find_ideaboard( params[:ideaboard_id])
     @list = List.new
   end
 
@@ -20,6 +21,7 @@ class ListsController < ApplicationController
   end
 
   def edit
+    @ideaboard = find_ideaboard( params[:ideaboard_id])
     @list = List.find_by(id: params[:id])
   end
 
@@ -41,7 +43,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @ideaboard = Ideaboard.find_by(id: params[:ideaboard_id])
+    @ideaboard = find_ideaboard( params[:ideaboard_id])
     @list = List.find_by(id: params[:id])
   end
 
