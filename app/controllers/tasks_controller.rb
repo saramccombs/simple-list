@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   def new
+    @ideaboard = find_ideaboard(params[:ideaboard_id])
     @task = Task.find_by(id: params[:id])
     @list = find_list(params[:list_id])
     @task = Task.new
