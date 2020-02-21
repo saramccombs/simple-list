@@ -8,6 +8,18 @@ class ApplicationController < ActionController::Base
   def show
   end
 
+  # Helper method exposed to the whole app
+  # Cannot be used within the Ideaboard controller as is
+  def find_ideaboard(id)
+    Ideaboard.find_by(id: id)
+  end
+
+  # Helper method exposed to the whole app
+  # Cannot be used within the List controller as is
+  def find_list(id)
+    List.find_by(id: id)
+  end
+
   protected
 
   def configure_permitted_parameters

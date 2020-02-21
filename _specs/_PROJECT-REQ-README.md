@@ -1,4 +1,4 @@
-# Build a Rails App
+# Flatiron Rails Project
 
 ## Overview
 

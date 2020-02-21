@@ -1,4 +1,12 @@
-<h3>Edit Ideaboard</h3>
+<%= render 'jumbotron_ideaboards' %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Dashboard", root_path %></li>
+    <li class="breadcrumb-item"><%= link_to @ideaboard.ideaboard_name, user_ideaboard_path(current_user, @ideaboard) %></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+</nav>
 <%= form_for @ideaboard, url: user_ideaboard_path, method: :patch do |f| %>
   <div class="form-field:">
     <%= f.label :ideaboard_name, "Name: " %><br />
