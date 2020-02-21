@@ -2,10 +2,15 @@
 
 Specs:
 - [x] Using Ruby on Rails for the project
+  - I used Ruby on Rails.
 
-- [ ] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
+- [x] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
+  - A `User` has many `Ideaboards`.
+  - An `Ideaboard` has many `Lists`.
+  - A `List` has many `Tasks`.
 
-- [ ] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+- [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
+  - An `Ideaboard` belongs to a `User`.
 
 - [ ] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
 
