@@ -1,4 +1,14 @@
-<h3>Edit Task</h3>
+<%= render 'lists/jumbotron_lists' %>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Dashboard", root_path %></li>
+    <li class="breadcrumb-item"><%= link_to @ideaboard.ideaboard_name, user_ideaboard_path(current_user, @ideaboard) %></li>
+    <li class="breadcrumb-item"><%= link_to @list.list_name, user_ideaboard_list_path(current_user, @ideaboard, @list) %></li>
+    <li class="breadcrumb-item active" aria-current="page">Edit Task</li>
+  </ol>
+</nav>
+
 <%= form_for @task, url: user_ideaboard_list_task_path, method: :patch do |f| %>
   <div class="form-field">
     <%= f.label :task_desc, "Description: " %><br />
