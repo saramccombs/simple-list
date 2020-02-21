@@ -1,3 +1,14 @@
-<h1>Edit List</h1>
+<h3>Edit List</h3>
 
-<%= render 'list_form' %>
+<%= form_for @list, url: user_ideaboard_lists_path, method: :patch do |f| %>
+  <div class="form-field:">
+  <%= f.label :list_name, "Name: " %><br />
+  <%= f.text_field :list_name %>
+</div>
+<div class="form-field">
+  <%= f.label :list_desc, "Description: " %><br />
+  <%= f.text_field :list_desc %>
+</div>
+  <br />
+<%= f.submit %>
+<% end %>
