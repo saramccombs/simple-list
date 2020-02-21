@@ -1,6 +1,5 @@
 <h3>Edit List</h3>
-
-<%= form_for @list, url: user_ideaboard_lists_path, method: :patch do |f| %>
+<%= form_for @list, url: user_ideaboard_list_path, method: :patch do |f| %>
   <div class="form-field:">
   <%= f.label :list_name, "Name: " %><br />
   <%= f.text_field :list_name %>
