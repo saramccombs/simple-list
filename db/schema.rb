@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_195613) do
+ActiveRecord::Schema.define(version: 2020_02_20_022916) do
 
   create_table "ideaboards", force: :cascade do |t|
     t.string "ideaboard_name"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_195613) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "task_desc"
-    t.integer "task_priority"
+    t.string "task_priority"
     t.integer "list_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

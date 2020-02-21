@@ -49,3 +49,9 @@ gem "omniauth", "~> 1.9"
 gem "omniauth-github", "~> 1.4"
 
 gem "dotenv-rails", "~> 2.7"
+
+gem "font_awesome5_rails", "~> 1.0"
+
+gem "bootstrap", "= 4.4.1"
+
+gem "jquery-rails", "~> 4.3"

@@ -1,5 +1,4 @@
 class IdeaboardsController < ApplicationController
-
   def new
     @ideaboard = Ideaboard.new
   end
@@ -34,9 +33,7 @@ class IdeaboardsController < ApplicationController
   end
 
   def show
-    byebug
     @ideaboard = Ideaboard.find_by(id: params[:id])
-    byebug
   end
 
   private

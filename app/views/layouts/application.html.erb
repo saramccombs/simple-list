@@ -9,11 +9,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <nav>
-      <%= link_to '-Dashboard-', root_path %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    </nav>
-    <%= yield %>
+  <body class="text-center">
+    <div class="container-sm">
+      <nav class="navbar navbar-light" style="background-color: #413c58;">
+        <span class="navbar-brand text-light">SimpleList</span>
+        <div>
+          <ul class="nav">
+            <li class="nav-item"><%= link_to fas_icon('home 2x'), root_path %>&nbsp;</li>
+            <li class="nav-item"><%= link_to fas_icon('sign-out-alt 2x'), destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </nav>
+      <%= yield %>
+    </div>
   </body>
 </html>

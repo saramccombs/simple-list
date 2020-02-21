@@ -1,0 +1,15 @@
+<h3>Create New Task</h3>
+<%= form_for @task, url: user_ideaboard_list_tasks_path, method: :post do |f| %>
+  <div class="form-field">
+    <%= f.label :task_desc, "Description: " %><br />
+    <%= f.text_field :task_desc %>
+  </div>
+  <div class="form-field:">
+    <%= f.label :task_priority, "Task Priority: " %><br />
+    <%= f.radio_button :task_priority, 'low', checked: true %>Low<br />
+    <%= f.radio_button :task_priority, 'medium' %>Medium<br />
+    <%= f.radio_button :task_priority, 'high' %>High<br />
+  </div>
+    <br />
+  <%= f.submit %>
+<% end %>

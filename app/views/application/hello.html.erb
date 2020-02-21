@@ -1,15 +1,36 @@
-<h1>Simple List Dashboard</h1>
+<div class="jumbotron jumbotron-fluid bg-info text-light">
+  <div class="container">
+    <h1 class="display-4">Welcome back, <%= current_user.name %>!</h1>
+    <p class="lead">Which board would you like to look at today?</p>
+  </div>
+</div>
 
-<%= link_to  "Create New Ideaboard", new_user_ideaboard_path(current_user.id) %><br />
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+  </ol>
+</nav>
+
+<div class="btn-group" role="group" aria-label="">
+  <button type="button" class="btn btn-light"><%= link_to far_icon('edit', text: "Edit Account") %></button>
+  <button type="button" class="btn btn-light"><%= link_to far_icon('trash-alt', text: "Delete Account") %></button>
+  <button type="button" class="btn btn-light"><%= link_to far_icon('plus-square', text: "Create Board"), new_user_ideaboard_path(current_user) %></button>
+</div>
+<hr />
 
 <% if current_user.ideaboards.count == 0 %>
   You have no ideaboards.
 <% else %>
   <% current_user.ideaboards.each do |ideaboard| %>
-  <ul>
-    <li>
-    <%= link_to ideaboard.ideaboard_name, user_ideaboard_path(current_user,ideaboard) %>
-    </li>
-  </ul>
+    <div class="row">
+      <div class="col">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to ideaboard.ideaboard_name, user_ideaboard_path(current_user,ideaboard) %>
+          <span class="badge badge-info p-2 text-body"><%= ideaboard.lists.count %></span>
+          </li>
+        </ul>
+      </div>
+    </div>
   <% end %>
 <% end %>

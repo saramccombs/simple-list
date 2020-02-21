@@ -1,0 +1,14 @@
+<h3>Create New List</h3>
+
+<%= form_with model: @list, url: user_ideaboard_lists_path, method: :post do |f| %>
+  <div class="form-field:">
+  <%= f.label :list_name, "Name: " %><br />
+  <%= f.text_field :list_name %>
+</div>
+<div class="form-field">
+  <%= f.label :list_desc, "Description: " %><br />
+  <%= f.text_field :list_desc %>
+</div>
+  <br />
+<%= f.submit %>
+<% end %>
