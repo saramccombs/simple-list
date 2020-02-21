@@ -20,7 +20,7 @@ class ListsController < ApplicationController
   def update
     @list = List.find_by(id: params[:id])
     if @list.update(list_params)
-      redirect_to [current_user, @list]
+      redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
     else
       #TODO: Add error message 'update failed'
       render edit_user_ideaboard_list
@@ -28,9 +28,10 @@ class ListsController < ApplicationController
   end
 
   def destroy
+    #TODO Add error message asking for confirming deletion of list if full of tasks.
     @list = List.find_by(id: params[:id])
     @list.destroy
-    redirect_to root_url
+    redirect_to user_ideaboard_path(current_user, params[:ideaboard_id])
   end
 
   def show
