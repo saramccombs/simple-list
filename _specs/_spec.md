@@ -24,7 +24,14 @@ Specs:
 
 - [ ] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
 
-- [ ] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
+- [x] Include reasonable validations for simple model objects
+  - A `user` must have a name
+  - A `user` must have a unique username
+  - A `user` must have a unique email address (devise)
+  - A `user`'s password cannot be blank and has a 6 characters minimum (devise)
+  - An `ideaboard` must have a name
+  - A `list` must have a name
+  - A `task` must have a description and a priority
 
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
 
@@ -48,6 +55,12 @@ Specs:
 
 Confirm:
 - [ ] The application is pretty DRY
+
 - [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+
+- [x] Views use helper methods if appropriate
+  - have both a `find_ideaboard` and a `find_list` helper methods
+
+- [x] Views use partials if appropriate
+  - There are `_jumbotron_ideaboards` and `_jumbotron_lists` partials
+  - Devise has a `_shared_links` partial
