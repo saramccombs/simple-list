@@ -1,10 +1,12 @@
 class TasksController < ApplicationController
   def new
+    @task = Task.find_by(id: params[:id])
+    @list = find_list(params[:list_id])
     @task = Task.new
   end
 
   def create
-    @list = List.find_by(id: params[:list_id])
+    @list = find_list(params[:list_id])
     #TODO TASK: Why does .build not work here? Refactor this.
     @task = Task.new
     @task.task_desc = params[:task][:task_desc]
