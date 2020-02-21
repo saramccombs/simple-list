@@ -1,5 +1,48 @@
-User#show
+<div class="jumbotron jumbotron-fluid bg-info text-light">
+  <div class="container">
+    <h1 class="display-4"><%= current_user.name %></h1>
+    <p class="lead">User Account</p>
+  </div>
+</div>
 
-All user information will be shown here.
-Edit button will be here.
-Delete button will be here.
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Dashboard", root_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">User Account</li>
+  </ol>
+</nav>
+
+<div class="btn-group" role="group" aria-label="">
+  <button type="button" class="btn btn-light"><%= link_to fas_icon('user-edit', text: "Edit Account"), edit_user_registration_path %></button>
+</div>
+
+<br /><br />
+
+<div class="row">
+  <div class="col-6 mx-auto">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: <%= current_user.name %></li>
+      <li class="list-group-item">Username: <%= current_user.username %></li>
+      <li class="list-group-item">Email: <%= current_user.email %></li>
+    </ul>
+  </div>
+
+  <div class="col-6 mx-auto">
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Number of Boards
+      <span class="badge badge-primary badge-pill"><%= current_user.ideaboards.count %></span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Number of Lists
+      <span class="badge badge-primary badge-pill"><%= current_user.lists.count %></span>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Number of Tasks
+      <span class="badge badge-primary badge-pill"><%= current_user.tasks.count %></span>
+      </li>
+    </ul>
+  </div>
+</div>
