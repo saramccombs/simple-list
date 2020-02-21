@@ -1,2 +1,29 @@
-<h1>Edit Task</h1>
-<%= render "task_form" %>
+<h3>Edit Task</h3>
+<%= form_for @task, url: user_ideaboard_list_tasks_path, method: :patch do |f| %>
+  <div class="form-field">
+    <%= f.label :task_desc, "Description: " %><br />
+    <%= f.text_field :task_desc %>
+  </div>
+  <div class="form-field:">
+    <%= f.label :task_priority, "Task Priority: " %><br />
+    <%= f.radio_button :task_priority, 'low', checked: true %>Low<br />
+    <%= f.radio_button :task_priority, 'medium' %>Medium<br />
+    <%= f.radio_button :task_priority, 'high' %>High<br />
+  </div>
+    <br />
+  <%= f.submit %>
+<% end %>
+
+<h3>Edit Ideaboard</h3>
+<%= form_for @ideaboard, url: user_ideaboard_path, method: :patch do |f| %>
+  <div class="form-field:">
+    <%= f.label :ideaboard_name, "Name: " %><br />
+    <%= f.text_field :ideaboard_name %>
+  </div>
+  <div class="form-field">
+    <%= f.label :ideaboard_desc, "Description: " %><br />
+    <%= f.text_field :ideaboard_desc %>
+  </div>
+    <br />
+  <%= f.submit %>
+<% end %>
