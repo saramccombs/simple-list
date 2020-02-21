@@ -14,7 +14,7 @@
 
 <div class="btn-group" role="group" aria-label="">
   <button type="button" class="btn btn-light"><%= link_to far_icon('edit', text: "Edit Board"), edit_user_ideaboard_path(current_user, @ideaboard) %></button>
-  <button type="button" class="btn btn-light"><%= link_to far_icon('trash-alt', text: "Delete Board"), user_ideaboard_path(current_user, @ideaboard), method: :delete %></button>
+  <button type="button" class="btn btn-light"><%= link_to far_icon('trash-alt', text: "Delete Board"), user_ideaboard_path(current_user, @ideaboard), data: { confirm: "Are you sure? This will also delete ALL associated lists and tasks." }, method: :delete %></button>
   <button type="button" class="btn btn-light"><%= link_to far_icon('plus-square', text: "Create List"), new_user_ideaboard_list_path(current_user, @ideaboard) %></button>
 </div>
 <hr />
