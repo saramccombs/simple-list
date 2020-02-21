@@ -15,7 +15,7 @@
 
 <div class="btn-group" role="group" aria-label="">
   <button type="button" class="btn btn-light"><%= link_to far_icon('edit', text: "Edit List"), edit_user_ideaboard_list_path(current_user, @ideaboard, @list) %></button>
-  <button type="button" class="btn btn-light"><%= link_to far_icon('trash-alt', text: "Delete List"), user_ideaboard_list_path(current_user, @ideaboard, @list), method: :delete %></button>
+  <button type="button" class="btn btn-light"><%= link_to far_icon('trash-alt', text: "Delete List"), user_ideaboard_list_path(current_user, @ideaboard, @list), data: { confirm: "Are you sure? This will also delete ALL associated tasks." }, method: :delete %></button>
   <button type="button" class="btn btn-light"><%= link_to far_icon('plus-square', text: "Create Task"), new_user_ideaboard_list_task_path(current_user, @ideaboard, @list) %></button>
 </div>
 <hr />
@@ -31,7 +31,7 @@
           <span class="mr-auto p-2"><%= task.task_desc %></span>
           <%= link_to far_icon('edit'), edit_user_ideaboard_list_task_path(current_user, @ideaboard, @list, task) %>
           &nbsp;
-          <%= link_to far_icon('trash-alt'), user_ideaboard_list_task_path(current_user, @ideaboard, @list, task), method: :delete %>
+          <%= link_to far_icon('trash-alt'), user_ideaboard_list_task_path(current_user, @ideaboard, @list, task), data: { confirm: "Are you sure?" }, method: :delete %>
           &nbsp;&nbsp;
           <% if task.task_priority == "high" %>
             <span class="badge badge-danger p-2 text-body"><%= task.task_priority %></span>
