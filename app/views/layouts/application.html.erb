@@ -12,10 +12,13 @@
   <body class="text-center">
     <div class="container-sm">
       <nav class="navbar navbar-light" style="background-color: #413c58;">
-        <span class="navbar-brand text-light">SimpleList</span>
+        <span class="navbar-brand text-light"><%= link_to "SimpleList", root_path %></span>
         <div>
           <ul class="nav">
-            <li class="nav-item"><%= link_to fas_icon('home 2x'), root_path %>&nbsp;</li>
+            <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to fas_icon('user 2x'), user_path(current_user) %>&nbsp;&nbsp;</li>
+            <% end %>
+            <li class="nav-item"><%= link_to fas_icon('home 2x'), root_path %>&nbsp;&nbsp;</li>
             <li class="nav-item"><%= link_to fas_icon('sign-out-alt 2x'), destroy_user_session_path, method: :delete %></li>
           </ul>
         </div>
