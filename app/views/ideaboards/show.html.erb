@@ -1,14 +1,30 @@
-<h1><%= @ideaboard.ideaboard_name %></h1>
-<%= link_to "Edit Ideaboard", edit_user_ideaboard_path(current_user, @ideaboard) %>
-<%= link_to "Create New List", new_user_ideaboard_list_path(current_user, @ideaboard) %><br />
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Dashboard", root_path %></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @ideaboard.ideaboard_name %></li>
+  </ol>
+</nav>
 
+<div class="jumbotron jumbotron-fluid bg-info text-light">
+  <div class="container">
+    <h1 class="display-4"><%= @ideaboard.ideaboard_name %></h1>
+    <p class="lead"><%= @ideaboard.ideaboard_desc %></p>
+  </div>
+</div>
+
+<div class="btn-group" role="group" aria-label="">
+  <button type="button" class="btn btn-light"><%= link_to far_icon('edit', text: "Edit Board"), edit_user_ideaboard_path(current_user, @ideaboard) %></button>
+  <button type="button" class="btn btn-light"><%= link_to far_icon('trash-alt', text: "Delete Board"), user_ideaboard_path(current_user, @ideaboard), method: :delete %></button>
+  <button type="button" class="btn btn-light"><%= link_to far_icon('plus-square', text: "Create List"), new_user_ideaboard_list_path(current_user, @ideaboard) %></button>
+</div>
+<hr />
 <% if @ideaboard.lists.count == 0 %>
   You have no lists for this ideaboard.
 <% else %>
   <% @ideaboard.lists.each do |list| %>
-  <ul>
+  <ul style="list-style-type:none;">
     <li>
-    <%= link_to list.list_name, user_ideaboard_list_path(current_user, @ideaboard, list) %>
+    <%= link_to list.name_with_task_count, user_ideaboard_list_path(current_user, @ideaboard, list), method: :get %>
     </li>
   </ul>
   <% end %>

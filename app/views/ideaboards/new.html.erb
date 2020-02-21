@@ -1,3 +1,13 @@
-<h1>Create New Ideaboard</h1>
-
-<%= render 'ideaboard_form' %>
+<h3>Create New Ideaboard</h3>
+<%= form_for @ideaboard, url: user_ideaboards_path(current_user), method: :post do |f| %>
+    <div class="form-field:">
+    <%= f.label :ideaboard_name, "Name: " %><br />
+    <%= f.text_field :ideaboard_name %>
+  </div>
+  <div class="form-field">
+    <%= f.label :ideaboard_desc, "Description: " %><br />
+    <%= f.text_field :ideaboard_desc %>
+  </div>
+    <br />
+  <%= f.submit %>
+<% end %>
