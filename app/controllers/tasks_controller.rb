@@ -35,9 +35,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    byebug
     @task = Task.find_by(id: params[:id])
-    byebug
     @task.destroy
     redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], params[:list_id])
   end
