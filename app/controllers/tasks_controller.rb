@@ -5,8 +5,7 @@ class TasksController < ApplicationController
 
   def create
     @list = List.find_by(id: params[:list_id])
-    #TODO Why does .build not work here?
-    #TODO Refactor this.
+    #TODO TASK: Why does .build not work here? Refactor this.
     @task = Task.new
     @task.task_desc = params[:task][:task_desc]
     @task.task_priority = params[:task][:task_priority]
