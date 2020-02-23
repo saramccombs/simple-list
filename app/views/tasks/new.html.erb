@@ -19,9 +19,10 @@
   <br />
   <div class="form-field:">
     <%= f.label :task_priority, "Task Priority: " %><br />
-    <%= f.radio_button :task_priority, 'low', checked: true %>Low<br />
-    <%= f.radio_button :task_priority, 'medium' %>Medium<br />
-    <%= f.radio_button :task_priority, 'high' %>High<br />
+    <%= f.radio_button :task_priority, 'n/a', checked: true %>n/a&nbsp;
+    <%= f.radio_button :task_priority, 'low' %>Low&nbsp;
+    <%= f.radio_button :task_priority, 'medium' %>Medium&nbsp;
+    <%= f.radio_button :task_priority, 'high' %>High&nbsp;
   </div>
   <br />
   <%= f.submit %>
