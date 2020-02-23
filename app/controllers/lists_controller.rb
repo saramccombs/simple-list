@@ -6,6 +6,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new
+    #TODO: Refactor this as soon as you can.
     @list.list_name = params[:list][:list_name]
     @list.list_desc = params[:list][:list_desc]
     @list.ideaboard_id = params[:ideaboard_id]
@@ -37,7 +38,6 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    #TODO Add error message asking for confirming deletion of list if full of tasks.
     @list = List.find_by(id: params[:id])
     @list.destroy
     redirect_to user_ideaboard_path(current_user, params[:ideaboard_id])
@@ -46,6 +46,20 @@ class ListsController < ApplicationController
   def show
     @ideaboard = find_ideaboard( params[:ideaboard_id])
     @list = List.find_by(id: params[:id])
+
+    if params[:task_priority_sort] == "All"
+      @tasks = @list.tasks
+    elsif params[:task_priority_sort] == "High"
+      @tasks = Task.find_list(params[:id]).high_priority
+    elsif params[:task_priority_sort] == "Medium"
+      @tasks = Task.find_list(params[:id]).medium_priority
+    elsif params[:task_priority_sort] == "Low"
+      @tasks = Task.find_list(params[:id]).low_priority
+    elsif params[:task_priority_sort] == "n/a"
+      @tasks = Task.find_list(params[:id]).no_priority
+    else
+      @tasks = @list.tasks
+    end
   end
 
   private
