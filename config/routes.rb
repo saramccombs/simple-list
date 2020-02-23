@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :chores
+  
   resources :users, only: [] do
     resources :ideaboards, only: [:new, :edit, :create, :update, :destroy, :show] do
       resources :lists, only: [:new, :edit, :create, :update, :destroy, :show] do

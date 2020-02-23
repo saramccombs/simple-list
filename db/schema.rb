@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_21_171128) do
+ActiveRecord::Schema.define(version: 2020_02_23_050441) do
+
+  create_table "chores", force: :cascade do |t|
+    t.string "chore_desc"
+    t.string "chore_priority"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "ideaboards", force: :cascade do |t|
     t.string "ideaboard_name"
