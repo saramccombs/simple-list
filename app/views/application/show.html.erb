@@ -14,6 +14,7 @@
 
 <div class="btn-group" role="group" aria-label="">
   <button type="button" class="btn btn-light"><%= link_to fas_icon('user-edit', text: "Edit Account"), edit_user_registration_path %></button>
+  <button type="button" class="btn btn-light"><%= link_to fas_icon('user-friends', text: "Join/Edit Group"), edit_user_registration_path %></button>
 </div>
 
 <br /><br />
@@ -28,6 +29,7 @@
   </div>
 
   <div class="col-6 mx-auto">
+    <h3>Current Stats</h3>
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Number of Boards
