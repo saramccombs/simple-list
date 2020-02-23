@@ -2,6 +2,11 @@
   <div class="container">
     <h1 class="display-4"><%= @list.list_name %></h1>
     <p class="lead"><%= @list.list_desc %></p>
+    <div>
+        <% @list.tags.uniq.map do |tag| %>
+        <span class="badge badge-secondary"><%= tag.tag_name %></span>
+        <% end %>
+    </div>
   </div>
 </div>
 
@@ -27,7 +32,7 @@
 <div>
   <h3>Filter Tasks:</h3>
   <%= form_tag(user_ideaboard_list_path, method: :get) do %>
-    <%= select_tag "task_priority_sort", options_for_select(["All", "High", "Medium", "Low", ""]) %>
+    <%= select_tag "task_priority_sort", options_for_select(["All", "High", "Medium", "Low", "n/a"]) %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
@@ -38,11 +43,11 @@
       <div class="col">
         <ul class="list-group">
           <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="mr-auto p-2"><%= task.task_desc %></span>
           <%= link_to far_icon('edit'), edit_user_ideaboard_list_task_path(current_user, @ideaboard, @list, task) %>
           &nbsp;
           <%= link_to far_icon('trash-alt'), user_ideaboard_list_task_path(current_user, @ideaboard, @list, task), data: { confirm: "Are you sure?" }, method: :delete %>
           &nbsp;&nbsp;
+          <span class="mr-auto p-2"><%= task.task_desc %></span>
           <% if task.task_priority == "high" %>
             <span class="badge badge-danger p-2 text-body"><%= task.task_priority %></span>
           <% elsif task.task_priority == "medium" %>
