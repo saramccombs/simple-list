@@ -1,2 +1,46 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<div class="jumbotron jumbotron-fluid bg-info text-light">
+  <div class="container">
+    <h1 class="display-4">Groups</h1>
+    <p class="lead">Create a New Group</p>
+  </div>
+</div>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><%= link_to "Dashboard", root_path %></li>
+    <li class="breadcrumb-item"><%= link_to "Groups", groups_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">New Group</li>
+  </ol>
+</nav>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+  <%= f.label :groupname, "Group Name: " %>
+  <%= f.text_field :groupname %>
+  </div>
+<br />
+  <div class="field">
+    <%= f.fields_for :chore %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
