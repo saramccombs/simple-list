@@ -60,6 +60,7 @@ Acts as a join table for users and tasks.
 - belongs_to user
 - belongs_to ideaboard
 - has_many tasks
+- has_many tags, through tasks
 
 ### List Attributes
 
@@ -84,8 +85,11 @@ Acts as a join table for ideaboards and tasks.
 
 - belongs_to user
 - belongs_to list
+- belongs_to tag
 
 No direct relationship from tasks to ideaboards as `belongs_to :ideaboard, through: :lists` doesn't exist as a relationship type.
+
+Tasks is the join table for the many-to-many relationship between Lists and Tags
 
 ### Task Attributes
 
@@ -94,6 +98,7 @@ No direct relationship from tasks to ideaboards as `belongs_to :ideaboard, throu
 - task_priority
 - user_id (FK)
 - list_id (FK)
+- tag_id (FK)
 
 ### Task Views & Actions
 
@@ -101,3 +106,15 @@ No direct relationship from tasks to ideaboards as `belongs_to :ideaboard, throu
 - Edit/Update: edits an existing task.
 - Show: None
 - Index: None
+
+----
+
+## Model: Tags
+
+- has_many lists
+- has_many ists, through tasks
+
+### Tag Attributes
+
+- id
+- tag_name
