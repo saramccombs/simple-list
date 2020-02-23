@@ -19,7 +19,8 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
     else
-      render new_user_ideaboard_list_task
+      flash[:errors] = @user.errors.full_messages
+      render :new
     end
   end
 
@@ -34,8 +35,8 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], params[:list_id])
     else
-      #TODO: Add error message 'update failed'
-      render edit_user_ideaboard_list_task
+      flash[:errors] = @user.errors.full_messages
+      render :edit
     end
   end
 

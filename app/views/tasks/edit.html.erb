@@ -9,6 +9,8 @@
   </ol>
 </nav>
 
+<%= render 'errors' %>
+
 <%= form_for @task, url: user_ideaboard_list_task_path, method: :patch do |f| %>
   <div class="form-field">
     <%= f.label :task_desc, "Description: " %>
