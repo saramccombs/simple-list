@@ -16,7 +16,8 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
     else
-      render new_user_ideaboard_list(current_user, params[:ideaboard_id])
+      flash[:errors] = @user.errors.full_messages
+      render :new
     end
   end
 
@@ -30,8 +31,8 @@ class ListsController < ApplicationController
     if @list.update(list_params)
       redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
     else
-      #TODO: Add error message 'update failed'
-      render edit_user_ideaboard_list
+      flash[:errors] = @user.errors.full_messages
+      render :edit
     end
   end
 

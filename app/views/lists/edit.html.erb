@@ -9,6 +9,8 @@
   </ol>
 </nav>
 
+<%= render 'errors' %>
+
 <%= form_for @list, url: user_ideaboard_list_path, method: :patch do |f| %>
   <div class="form-field:">
   <%= f.label :list_name, "Name: " %><br />
