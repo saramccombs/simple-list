@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :ideaboards, dependent: :destroy
   has_many :lists, through: :ideaboards, dependent: :destroy
   has_many :tasks, through: :lists, dependent: :destroy
+  has_many :groups
+  has_many :chores, through: :groups
 
   validates :name, presence: true
   validates :username, presence: true

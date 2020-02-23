@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_23_050441) do
+ActiveRecord::Schema.define(version: 2020_02_23_051334) do
 
   create_table "chores", force: :cascade do |t|
     t.string "chore_desc"
     t.string "chore_priority"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "chore_id", null: false
+    t.string "groupname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["chore_id"], name: "index_groups_on_chore_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "ideaboards", force: :cascade do |t|
@@ -66,6 +76,8 @@ ActiveRecord::Schema.define(version: 2020_02_23_050441) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "groups", "chores"
+  add_foreign_key "groups", "users"
   add_foreign_key "ideaboards", "users"
   add_foreign_key "lists", "ideaboards"
   add_foreign_key "lists", "users"
