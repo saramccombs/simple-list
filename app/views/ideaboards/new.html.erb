@@ -11,6 +11,9 @@
     <li class="breadcrumb-item active" aria-current="page">New Board</li>
   </ol>
 </nav>
+
+<%= render 'errors' %>
+
 <%= form_for @ideaboard, url: user_ideaboards_path(current_user), method: :post do |f| %>
     <div class="form-field:">
     <%= f.label :ideaboard_name, "Name: " %><br />

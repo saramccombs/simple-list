@@ -23,7 +23,17 @@
 <% if @list.tasks.count == 0 %>
   You have no tasks/items for this list.
 <% else %>
-  <% @list.tasks.each do |task| %>
+
+<div>
+  <h3>Filter Tasks:</h3>
+  <%= form_tag(user_ideaboard_list_path, method: :get) do %>
+    <%= select_tag "task_priority_sort", options_for_select(["All", "High", "Medium", "Low", ""]) %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+<br />
+  <% @tasks.each do |task| %>
     <div class="row">
       <div class="col">
         <ul class="list-group">

@@ -9,17 +9,24 @@
   </ol>
 </nav>
 
+<%= render 'errors' %>
+
 <%= form_for @task, url: user_ideaboard_list_task_path, method: :patch do |f| %>
   <div class="form-field">
-    <%= f.label :task_desc, "Description: " %><br />
+    <%= f.label :task_desc, "Description: " %>
     <%= f.text_field :task_desc %>
   </div>
+  <br />
+  <%= f.label :list_id, "List: " %>
+  <%= select_tag :new_list_id, options_from_collection_for_select(@ideaboard.lists, "id", "list_name") %>
+  <br /><br />
   <div class="form-field:">
     <%= f.label :task_priority, "Task Priority: " %><br />
-    <%= f.radio_button :task_priority, 'low', checked: true %>Low<br />
-    <%= f.radio_button :task_priority, 'medium' %>Medium<br />
-    <%= f.radio_button :task_priority, 'high' %>High<br />
+    <%= f.radio_button :task_priority, 'n/a', checked: true %>n/a&nbsp;
+    <%= f.radio_button :task_priority, 'low' %>Low&nbsp;
+    <%= f.radio_button :task_priority, 'medium' %>Medium&nbsp;
+    <%= f.radio_button :task_priority, 'high' %>High&nbsp;
   </div>
-    <br />
+  <br />
   <%= f.submit %>
 <% end %>

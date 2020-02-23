@@ -33,7 +33,13 @@ Specs:
   - A `list` must have a name
   - A `task` must have a description and a priority
 
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method
+  - Task model( URL: /users/1/ideaboards/1/lists/1)
+    - `find_list`: returns all Tasks with a provided `list_id`
+    - `high_priority`: returns Tasks with a "high" `task_priority`
+    - `medium_priority`: returns Tasks with a "medium" `task_priority`
+    - `low_priority`: returns Tasks with a "low" `task_priority`
+    - `no_priority`: returns Tasks with a "n/a" `task_priority`
 
 - [x] Include signup (Devise)
 - [x] Include login (Devise)
@@ -51,12 +57,15 @@ Specs:
   - `/users/:user_id/ideaboards/:ideaboard_id/lists/new` (lists#new)
   - `/users/:user_id/ideaboards/:ideaboard_id/lists/:list_id/tasks/new` (tasks#new)
 
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+- [x] Include form display of validation errors
+  - Flash error messages are displayed for required items during new/create and edit/update actions.
+  - Used render to generate the `fields_with_errors` class the project requirements on Learn.co mention.
 
 Confirm:
-- [ ] The application is pretty DRY
+- [x] The application is pretty DRY
+  - There is still some refactoring to be done, but it's relatively dry.
 
-- [ ] Limited logic in controllers
+- [x] Limited logic in controllers
 
 - [x] Views use helper methods if appropriate
   - have both a `find_ideaboard` and a `find_list` helper methods
@@ -64,3 +73,4 @@ Confirm:
 - [x] Views use partials if appropriate
   - There are `_jumbotron_ideaboards` and `_jumbotron_lists` partials
   - Devise has a `_shared_links` partial
+  - Flash error messages are within an `_errors` partial.
