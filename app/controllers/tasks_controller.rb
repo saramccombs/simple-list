@@ -7,7 +7,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    byebug
     @list = find_list(params[:list_id])
     #TODO TASK: Why does .build not work here? Refactor this.
     @task = Task.new
@@ -32,6 +31,7 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find_by(id: params[:id])
+    @task.list_id = params[:new_list_id]
     if @task.update(task_params)
       redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], params[:list_id])
     else
