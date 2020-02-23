@@ -17,6 +17,9 @@
     <%= f.text_field :task_desc %>
   </div>
   <br />
+  <%= f.label :tag_id, "Tag: " %>
+  <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, "id", "tag_name"), include_blank: true %><br />
+  <br />
   <div class="form-field:">
     <%= f.label :task_priority, "Task Priority: " %><br />
     <%= f.radio_button :task_priority, 'n/a', checked: true %>n/a&nbsp;
