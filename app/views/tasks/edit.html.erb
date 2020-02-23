@@ -11,15 +11,16 @@
 
 <%= form_for @task, url: user_ideaboard_list_task_path, method: :patch do |f| %>
   <div class="form-field">
-    <%= f.label :task_desc, "Description: " %><br />
+    <%= f.label :task_desc, "Description: " %>
     <%= f.text_field :task_desc %>
   </div>
+  <br />
   <div class="form-field:">
     <%= f.label :task_priority, "Task Priority: " %><br />
     <%= f.radio_button :task_priority, 'low', checked: true %>Low<br />
     <%= f.radio_button :task_priority, 'medium' %>Medium<br />
     <%= f.radio_button :task_priority, 'high' %>High<br />
   </div>
-    <br />
+  <br />
   <%= f.submit %>
 <% end %>
