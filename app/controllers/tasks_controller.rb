@@ -7,6 +7,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    byebug
     @list = find_list(params[:list_id])
     #TODO TASK: Why does .build not work here? Refactor this.
     @task = Task.new
@@ -23,6 +24,8 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @ideaboard = find_ideaboard(params[:ideaboard_id])
+    @list = find_list(params[:list_id])
     @task = Task.find_by(id: params[:id])
   end
 
