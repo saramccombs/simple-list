@@ -3,5 +3,5 @@ class List < ApplicationRecord
   belongs_to :ideaboard
   has_many :tasks, dependent: :destroy
 
-  validates :list_name, presence: { message: "A list name is required."}
+  validates :list_name, presence: { message: "is required."}
 end
