@@ -32,7 +32,7 @@
 <div>
   <h3>Filter Tasks:</h3>
   <%= form_tag(user_ideaboard_list_path, method: :get) do %>
-    <%= select_tag "task_priority_sort", options_for_select(["All", "High", "Medium", "Low", ""]) %>
+    <%= select_tag "task_priority_sort", options_for_select(["All", "High", "Medium", "Low", "n/a"]) %>
     <%= submit_tag "Filter" %>
   <% end %>
 </div>
