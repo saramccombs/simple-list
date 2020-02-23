@@ -8,7 +8,8 @@ class IdeaboardsController < ApplicationController
     if @ideaboard.save
       redirect_to [current_user, @ideaboard]
     else
-      render new_user_ideaboard
+      flash[:errors] = @ideaboard.errors.full_messages
+      render :new
     end
   end
 
@@ -21,8 +22,8 @@ class IdeaboardsController < ApplicationController
     if @ideaboard.update(ideaboard_params)
       redirect_to [current_user, @ideaboard]
     else
-      #TODO: Add error message 'update failed'
-      render edit_user_ideaboard
+      flash[:errors] = @ideaboard.errors.full_messages
+      render :edit
     end
   end
 

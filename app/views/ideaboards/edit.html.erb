@@ -7,6 +7,9 @@
     <li class="breadcrumb-item active" aria-current="page">Edit</li>
   </ol>
 </nav>
+
+<%= render 'errors' %>
+
 <%= form_for @ideaboard, url: user_ideaboard_path, method: :patch do |f| %>
   <div class="form-field:">
     <%= f.label :ideaboard_name, "Name: " %><br />
