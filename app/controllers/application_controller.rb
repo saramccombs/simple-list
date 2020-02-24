@@ -9,15 +9,15 @@ class ApplicationController < ActionController::Base
   end
 
   # Helper method exposed to the whole app
-  # Cannot be used within the Ideaboard controller as is
-  def find_ideaboard(id)
-    Ideaboard.find_by(id: id)
+  # Cannot be used within the Ideaboard controller, use find_ideaboard
+  def set_ideaboard
+    @ideaboard = Ideaboard.find_by(id: params[:ideaboard_id])
   end
 
   # Helper method exposed to the whole app
-  # Cannot be used within the List controller as is
-  def find_list(id)
-    List.find_by(id: id)
+  # Cannot be used within the List controller, use find_list
+  def set_list
+    @list = List.find_by(id: params[:list_id])
   end
 
   protected
