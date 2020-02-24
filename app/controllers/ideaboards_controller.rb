@@ -14,11 +14,11 @@ class IdeaboardsController < ApplicationController
   end
 
   def edit
-    @ideaboard = Ideaboard.find_by(id: params[:id])
+    find_ideaboard
   end
 
   def update
-    @ideaboard = Ideaboard.find_by(id: params[:id])
+    find_ideaboard
     if @ideaboard.update(ideaboard_params)
       redirect_to [current_user, @ideaboard]
     else
@@ -28,16 +28,20 @@ class IdeaboardsController < ApplicationController
   end
 
   def destroy
-    @ideaboard = Ideaboard.find_by(id: params[:id])
+    find_ideaboard
     @ideaboard.destroy
     redirect_to root_url
   end
 
   def show
-    @ideaboard = Ideaboard.find_by(id: params[:id])
+    find_ideaboard
   end
 
   private
+
+  def find_ideaboard
+    @ideaboard = Ideaboard.find_by(id: params[:id])
+  end
 
   def ideaboard_params
     params.require(:ideaboard).permit(:user_id, :ideaboard_name, :ideaboard_desc)

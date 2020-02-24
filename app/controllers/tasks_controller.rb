@@ -1,22 +1,16 @@
 class TasksController < ApplicationController
+  before_action :set_ideaboard
+  before_action :set_list
+
   def new
-    @ideaboard = find_ideaboard(params[:ideaboard_id])
-    @task = Task.find_by(id: params[:id])
-    @list = find_list(params[:list_id])
     @task = Task.new
   end
 
   def create
-    @list = find_list(params[:list_id])
-    @ideaboard = find_ideaboard(params[:ideaboard_id])
-    #TODO TASK: Why does .build not work here? Refactor this.
-    @task = Task.new
-    @task.task_desc = params[:task][:task_desc]
-    @task.task_priority = params[:task][:task_priority]
-    @task.list_id = params[:list_id]
-    @task.user_id = params[:user_id]
+    @task = @list.tasks.build(task_params)
+
+    # tag_id would not get assigned without this line
     @task.tag_id = params[:tag_id]
-    @task.save
     if @task.save
       redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
     else
@@ -26,19 +20,15 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @ideaboard = find_ideaboard(params[:ideaboard_id])
-    @list = find_list(params[:list_id])
-    @task = Task.find_by(id: params[:id])
+    find_task
   end
 
   def update
-    @ideaboard = find_ideaboard(params[:ideaboard_id])
-    @list = find_list(params[:list_id])
-    @task = Task.find_by(id: params[:id])
+    find_task
     @task.list_id = params[:new_list_id]
     @task.tag_id = params[:new_tag_id]
     if @task.update(task_params)
-      redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], params[:list_id])
+      redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
     else
       flash[:errors] = @task.errors.full_messages
       render :edit
@@ -46,14 +36,18 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find_by(id: params[:id])
+    find_task
     @task.destroy
-    redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], params[:list_id])
+    redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
   end
 
   private
 
+  def find_task
+    @task = Task.find_by(id: params[:id])
+  end
+
   def task_params
-    params.require(:task).permit(:user_id, :task_desc, :list_id, :task_priority, :ideaboard_id)
+    params.require(:task).permit(:user_id, :task_desc, :list_id, :task_priority, :ideaboard_id, :tag_id)
   end
 end

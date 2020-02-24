@@ -1,21 +1,14 @@
 class ListsController < ApplicationController
+  before_action :set_ideaboard
+
   def new
-    @ideaboard = find_ideaboard( params[:ideaboard_id])
     @list = List.new
   end
 
   def create
-    @list = List.new
-    #TODO: Refactor this as soon as you can.
-    @list.list_name = params[:list][:list_name]
-    @list.list_desc = params[:list][:list_desc]
-    @list.ideaboard_id = params[:ideaboard_id]
-    @list.user_id = params[:user_id]
-    
-    #TODO LIST: Why does .build not work here? Refactor this.
-    # @list = current_user.lists.build(list_params)
+    @list = @ideaboard.lists.build(list_params)
     if @list.save
-      redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
+      redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
     else
       flash[:errors] = @user.errors.full_messages
       render :new
@@ -23,14 +16,13 @@ class ListsController < ApplicationController
   end
 
   def edit
-    @ideaboard = find_ideaboard( params[:ideaboard_id])
-    @list = List.find_by(id: params[:id])
+    find_list
   end
 
   def update
-    @list = List.find_by(id: params[:id])
+    find_list
     if @list.update(list_params)
-      redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
+      redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
     else
       flash[:errors] = @user.errors.full_messages
       render :edit
@@ -38,14 +30,13 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find_by(id: params[:id])
+    find_list
     @list.destroy
-    redirect_to user_ideaboard_path(current_user, params[:ideaboard_id])
+    redirect_to user_ideaboard_path(current_user, @ideaboard)
   end
 
   def show
-    @ideaboard = find_ideaboard( params[:ideaboard_id])
-    @list = List.find_by(id: params[:id])
+    find_list
 
     if params[:task_priority_sort] == "All"
       @tasks = @list.tasks
@@ -63,6 +54,10 @@ class ListsController < ApplicationController
   end
 
   private
+
+  def find_list
+    @list = List.find_by(id: params[:id])
+  end
 
   def list_params
     params.require(:list).permit(:user_id, :list_name, :list_desc, :ideaboard_id)
