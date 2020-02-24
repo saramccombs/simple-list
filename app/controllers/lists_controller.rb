@@ -5,15 +5,9 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new
-    #TODO: Refactor this as soon as you can.
-    @list.list_name = params[:list][:list_name]
-    @list.list_desc = params[:list][:list_desc]
-    @list.ideaboard_id = params[:ideaboard_id]
-    @list.user_id = params[:user_id]
-    
-    #TODO LIST: Why does .build not work here? Refactor this.
-    # @list = current_user.lists.build(list_params)
+    @ideaboard = find_ideaboard( params[:ideaboard_id])
+    @list = @ideaboard.lists.build(list_params)
+    byebug
     if @list.save
       redirect_to user_ideaboard_list_path(current_user, params[:ideaboard_id], @list)
     else
