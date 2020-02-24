@@ -18,7 +18,8 @@
   </div>
   <br />
   <%= f.label :tag_id, "Tag: " %>
-  <%= select_tag :new_tag_id, options_from_collection_for_select(Tag.all, "id", "tag_name", @task.tag_id), include_blank: true  %><br />
+  <%= select_tag :new_tag_id, options_from_collection_for_select(Tag.all.sort_by(&:tag_name), "id", "tag_name", @task.tag_id) %><br />
+  <i>* Tag cannot be blank.</i><br />
   <br />
   <%= f.label :list_id, "List: " %>
   <%= select_tag :new_list_id, options_from_collection_for_select(@ideaboard.lists, "id", "list_name", @task.list_id) %>
