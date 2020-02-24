@@ -18,7 +18,8 @@
   </div>
   <br />
   <%= f.label :tag_id, "Tag: " %>
-  <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, "id", "tag_name"), include_blank: true %><br />
+  <%= select_tag :tag_id, options_from_collection_for_select(Tag.all.sort_by(&:tag_name), "id", "tag_name"), include_blank: true %><br />
+  <i>* Tag cannot be blank.</i><br />
   <br />
   <div class="form-field:">
     <%= f.label :task_priority, "Task Priority: " %><br />
@@ -28,5 +29,6 @@
     <%= f.radio_button :task_priority, 'high' %>High&nbsp;
   </div>
   <br />
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit %>
 <% end %>
