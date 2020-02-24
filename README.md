@@ -1,24 +1,41 @@
-# README
+# SimpleList
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple list web app that allows you to create multiple ideaboards each containing multiple lists that each contain multiple tasks. 
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### Installing
 
-* System dependencies
+```
+bundle install
+```
 
-* Configuration
+### Usage
 
-* Database creation
+```
+rails server
+```
 
-* Database initialization
+Then, interact with the web app via the specified localhost port.
 
-* How to run the test suite
+## Built With
 
-* Services (job queues, cache servers, search engines, etc.)
+* [Ruby on Rails](https://rubyonrails.org/)
+* [Bootstrap](https://getbootstrap.com/)
+* [Font Awesome 5 Rails Gem](https://github.com/tomkra/font_awesome5_rails)
+* [Devise](https://github.com/heartcombo/devise)
+* [OmniAuth](https://github.com/omniauth/omniauth)
+* [OmniAuth Github](https://github.com/omniauth/omniauth-github)
 
-* Deployment instructions
+## Authors
 
-* ...
+* **Sara McCombs**
+
+## License
+
+This project is licensed under the MIT License
+
+## Acknowledgments
+
+* Huge shout out to my fellow Flatiron Students Katie and Leah who supported me during this project. We make a great team.
+* Jake my technical lead who always encourages me to pursue my persoanl learning goals.
