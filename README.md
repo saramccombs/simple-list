@@ -38,4 +38,4 @@ This project is licensed under the MIT License
 ## Acknowledgments
 
 * Huge shout out to my fellow Flatiron Students Katie and Leah who supported me during this project. We make a great team.
-* Jake my technical lead who always encourages me to pursue my persoanl learning goals.
+* Jake my Flatiron cohort lead who always encourages me to pursue my persoanl learning goals.
