@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_ideaboard
+  before_action :find_list, only: [:edit, :update, :destroy, :show]
 
   def new
     @list = List.new
@@ -16,11 +17,9 @@ class ListsController < ApplicationController
   end
 
   def edit
-    find_list
   end
 
   def update
-    find_list
     if @list.update(list_params)
       redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
     else
@@ -30,14 +29,11 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    find_list
     @list.destroy
     redirect_to user_ideaboard_path(current_user, @ideaboard)
   end
 
   def show
-    find_list
-
     if params[:task_priority_sort] == "All"
       @tasks = @list.tasks
     elsif params[:task_priority_sort] == "High"
