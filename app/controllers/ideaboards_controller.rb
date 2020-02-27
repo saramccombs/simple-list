@@ -1,4 +1,6 @@
 class IdeaboardsController < ApplicationController
+before_action :find_ideaboard, only: [:edit, :update, :destroy, :show]
+
   def new
     @ideaboard = Ideaboard.new
   end
@@ -14,11 +16,9 @@ class IdeaboardsController < ApplicationController
   end
 
   def edit
-    find_ideaboard
   end
 
   def update
-    find_ideaboard
     if @ideaboard.update(ideaboard_params)
       redirect_to [current_user, @ideaboard]
     else
@@ -28,13 +28,19 @@ class IdeaboardsController < ApplicationController
   end
 
   def destroy
-    find_ideaboard
     @ideaboard.destroy
     redirect_to root_url
   end
 
   def show
-    find_ideaboard
+    if params[:list_name]
+      @lists = List.where('list_name LIKE ?', "%#{params[:list_name]}%")
+      if !@lists.empty?
+        @lists
+      end
+    else
+      @lists = @ideaboard.lists
+    end
   end
 
   private
@@ -44,6 +50,6 @@ class IdeaboardsController < ApplicationController
   end
 
   def ideaboard_params
-    params.require(:ideaboard).permit(:user_id, :ideaboard_name, :ideaboard_desc)
+    params.require(:ideaboard).permit(:user_id, :ideaboard_name, :ideaboard_desc, :list_name)
   end
 end
