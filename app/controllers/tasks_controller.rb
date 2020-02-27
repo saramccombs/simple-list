@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_ideaboard
   before_action :set_list
+  before_action :find_task, only: [:edit, :update, :destroy]
 
   def new
     @task = Task.new
@@ -20,11 +21,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    find_task
   end
 
   def update
-    find_task
     @task.list_id = params[:new_list_id]
     @task.tag_id = params[:new_tag_id]
     if @task.update(task_params)
@@ -36,7 +35,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    find_task
     @task.destroy
     redirect_to user_ideaboard_list_path(current_user, @ideaboard, @list)
   end
