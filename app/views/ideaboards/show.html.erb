@@ -14,10 +14,15 @@
 </div>
 <hr />
 
+<%= form_tag (user_ideaboard_url), method: :get do %>
+  List Name: <%= text_field_tag :list_name, params[:list_name] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+<br />
 <% if @ideaboard.lists.count == 0 %>
   You have no lists for this ideaboard.
 <% else %>
-  <% @ideaboard.lists.each do |list| %>
+  <% @lists.each do |list| %>
     <div class="row">
       <div class="col">
         <ul class="list-group">
